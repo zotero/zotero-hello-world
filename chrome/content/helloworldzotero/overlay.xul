@@ -1,22 +1,48 @@
 <?xml version="1.0"?>
-<?xml-stylesheet href="chrome://helloworldzotero/skin/overlay.css" type="text/css"?>
+<?xml-stylesheet href="chrome://helloworldzotero/skin/overlay.css"
+                 type="text/css"?>
 <!DOCTYPE window SYSTEM "chrome://helloworldzotero/locale/hello.dtd">
 
 <overlay id="helloworldzotero-overlay"
-	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	 xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	
 	<stringbundleset id="stringbundleset">
 		<stringbundle id="hello-world-zotero-strings"
-			src="chrome://helloworldzotero/locale/hello.properties"/>
+                              src="chrome://helloworldzotero/locale/hello.properties"/>
 	</stringbundleset>
-	
+  
 	<menupopup id="zotero-tb-actions-popup">
 		<!-- Make sure the menu separator for utilities is visible -->
-		<menuseparator id="zotero-tb-actions-plugins-separator" hidden="false"/>
-		<menuitem insertbefore="zotero-tb-actions-separator" label="&helloworldzotero.name;"
-			oncommand="Zotero.HelloWorldZotero.insertHello()"/>
+		<menuseparator id="zotero-tb-actions-plugins-separator"
+                               hidden="false"/>
+		<menuitem insertbefore="zotero-tb-actions-separator"
+                          label="&helloworldzotero.name;"
+	                  oncommand="Zotero.HelloWorldZotero.insertHello()"/>
+	</menupopup>
+  
+	<!-- Items context menus -->
+	<menupopup id="zotero-itemmenu">
+		<!-- Make sure the menu separator for utilities is visible -->
+		<menuseparator/>
+		<menuitem label="Get Selected Items"
+                          tooltiptext="Get Selected Items"
+                          oncommand="Zotero.ItemSelector.getSelectedItems();"/>
+	</menupopup>         
+  
+	<menupopup id="zotero-collectionmenu">
+		<menuseparator/>
+		<menuitem label="Get Items In Collection"
+                          tooltiptext="Get Items in Collection"
+                          oncommand="Zotero.ItemSelector.getCollectionItems();"/>
 	</menupopup>
 	
+	<menupopup id="zotero-tb-actions-popup">
+		<menuitem id="z-hello-options"
+                          insertafter="zotero-tb-actions-prefs"
+                          label="Zotero Item Selector Preferences..."
+                          oncommand="Zotero.ItemSelector.Preferences();"/>
+	</menupopup>
+        
 	<!-- Include the main extension logic -->
 	<script src="chrome://zotero/content/include.js"/>
 	<script src="chrome://helloworldzotero/content/include.js"/>
