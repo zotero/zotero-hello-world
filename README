@@ -1,0 +1,22 @@
+Sample firefox plugin for demonstrating Zotero functionality.
+
+Getting Started in 4 steps.
+
+1.  Download this code and put it somewhere on your file system.
+
+2.  Set up a firefox development environment as per here:  https://developer.mozilla.org/en/setting_up_extension_development_environment
+
+Be sure to save the command you use to run your developer firefox as a shell
+script or batch file.  Mine looks like this (on OS X):
+
+ #!/bin/sh
+ /Applications/Firefox.app/Contents/MacOS/firefox-bin -P dev -no-remote 
+
+3.  Grab a copy of Zotero, its recommended to run a subversion build of Zotero and follow the instructions here: http://www.zotero.org/support/dev/svn_and_trac_access#running_an_svn_build_of_zotero
+
+4.  Put the file "helloworld@zotero.org" which contains the path to where you
+downloaded this code in the same location as the zotero@chnm.gmu.edu file you
+made in step 3.
+
+NOTE: It's a good idea to keep a symbolic link/shortcut to the profile
+extension library in your home directory or on your desktop.
