@@ -6,8 +6,8 @@ Zotero.HelloWorldZotero = {
 		this.DB = new Zotero.DBConnection('helloworld');
 		
 		if (!this.DB.tableExists('changes')) {
-			this.DB.query("CREATE TABLE changes (num INT)");
-			this.DB.query("INSERT INTO changes VALUES (0)");
+			this.DB.queryAsync("CREATE TABLE changes (num INT)");
+			this.DB.queryAsync("INSERT INTO changes VALUES (0)");
 		}
 		
 		// Register the callback in Zotero as an item observer
@@ -39,7 +39,7 @@ Zotero.HelloWorldZotero = {
 		notify: function(event, type, ids, extraData) {
 			if (event == 'add' || event == 'modify' || event == 'delete') {
 				// Increment a counter every time an item is changed
-				Zotero.HelloWorldZotero.DB.query("UPDATE changes SET num = num + 1");
+				Zotero.HelloWorldZotero.DB.queryAsync("UPDATE changes SET num = num + 1");
 				
 				if (event != 'delete') {
 					// Retrieve the added/modified items as Item objects
@@ -81,9 +81,12 @@ Zotero.HelloWorldZotero = {
 						stringName += "Deleted";
 						break;
 				}
-				
-				var str = document.getElementById('hello-world-zotero-strings').
-					getFormattedString(stringName, [titles.length]) + ":\n\n" +
+				// use the localized strings
+				let src = 'chrome://helloworldzotero/locale/hello.properties';
+				let stringBundleService = Components.classes["@mozilla.org/intl/stringbundle;1"]
+					.getService(Components.interfaces.nsIStringBundleService);
+				let stringBundle = stringBundleService.createBundle(src);
+				var str = stringBundle.GetStringFromName(stringName, titles.length) + ":\n\n" +
 					titles.join("\n");
 			}
 			
