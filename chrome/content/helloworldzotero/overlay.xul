@@ -5,7 +5,7 @@
 <overlay id="helloworldzotero-overlay"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	
-	<stringbundleset id="stringbundleset">
+	<stringbundleset>
 		<stringbundle id="hello-world-zotero-strings"
 			src="chrome://helloworldzotero/locale/hello.properties"/>
 	</stringbundleset>
