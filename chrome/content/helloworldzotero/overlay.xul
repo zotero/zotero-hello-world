@@ -9,13 +9,15 @@
 		<stringbundle id="hello-world-zotero-strings"
 			src="chrome://helloworldzotero/locale/hello.properties"/>
 	</stringbundleset>
-	
-	<menupopup id="zotero-tb-actions-popup">
-		<!-- Make sure the menu separator for utilities is visible -->
-		<menuseparator id="zotero-tb-actions-plugins-separator" hidden="false"/>
-		<menuitem insertbefore="zotero-tb-actions-separator" label="&helloworldzotero.name;"
-			oncommand="Zotero.HelloWorldZotero.insertHello()"/>
-	</menupopup>
+
+    <popup id="zotero-itemmenu">
+        <menuitem
+            class="menuitem-iconic"
+            id="zotero-itemmenu-ocr-menu"
+            label="Insert Hello"
+            oncommand="Zotero.HelloWorldZotero.insertHello()"
+          />
+    </popup>
 	
 	<!-- Include the main extension logic -->
 	<script src="chrome://zotero/content/include.js"/>
